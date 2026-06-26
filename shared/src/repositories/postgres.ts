@@ -1,5 +1,3 @@
-import { Pool } from 'pg';
-import { Pool as NeonPool } from '@neondatabase/serverless';
 import { notFound } from '../errors';
 import type { CollectionDoc, CollectionMap, CollectionName } from '../types';
 import type { ListFilter, Repository } from './types';
@@ -31,7 +29,10 @@ export class PostgresRepository implements Repository {
   private readonly db: Queryable;
 
   constructor(input: string | Queryable) {
-    this.db = typeof input === 'string' ? createPool(input) : input;
+    if (typeof input === 'string') {
+      throw new Error('PostgresRepository requires a Queryable. Use NodePostgresRepository or NeonPostgresRepository for connection strings.');
+    }
+    this.db = input;
   }
 
   async get<C extends CollectionName>(collection: C, id: string): Promise<CollectionDoc<C> | undefined> {
@@ -81,13 +82,6 @@ export class PostgresRepository implements Repository {
     const docs = result.rows.map((row) => rowToDoc<C>(row));
     return isFunctionFilter ? docs.filter(filter) : docs;
   }
-}
-
-function createPool(connectionString: string): Queryable {
-  if (process.env.DATABASE_DRIVER === 'neon') {
-    return new NeonPool({ connectionString }) as Queryable;
-  }
-  return new Pool({ connectionString });
 }
 
 function tableName(collection: CollectionName): string {
