@@ -1,0 +1,408 @@
+:root {
+  --bg: #070b12;
+  --panel: #101826;
+  --panel-2: #142033;
+  --line: rgba(255, 255, 255, 0.1);
+  --text: #f7fbff;
+  --muted: #91a0b6;
+  --accent: #2bd9ff;
+  --positive: #22c55e;
+  --negative: #ef4444;
+  --warning: #f59e0b;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+.app-shell {
+  width: min(100%, 480px);
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 18px 16px calc(86px + env(safe-area-inset-bottom));
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 5px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 6px;
+  font-size: 28px;
+  line-height: 1.08;
+}
+
+h2 {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.empty-state,
+.error-text {
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+}
+
+.error-text {
+  border-color: rgba(239, 68, 68, 0.45);
+  color: #fecaca;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+}
+
+.hero {
+  padding: 18px;
+}
+
+.hero-label,
+.field-label {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.hero-amount {
+  margin-top: 8px;
+  font-size: 38px;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.metric-card {
+  padding: 14px;
+}
+
+.metric-value {
+  margin-top: 8px;
+  font-size: 21px;
+  font-weight: 750;
+}
+
+.trend-positive {
+  color: var(--positive);
+}
+
+.trend-negative {
+  color: var(--negative);
+}
+
+.trend-warning {
+  color: #d97706;
+}
+
+.suggestion-list {
+  display: grid;
+  gap: 8px;
+}
+
+.suggestion-item {
+  min-height: 52px;
+  display: grid;
+  grid-template-columns: minmax(72px, auto) 1fr;
+  gap: 4px 10px;
+  align-items: center;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  text-align: left;
+}
+
+.suggestion-item small {
+  grid-column: 1 / -1;
+  color: var(--muted);
+}
+
+.trend-neutral {
+  color: var(--muted);
+}
+
+.row,
+.list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.stack {
+  display: grid;
+  gap: 12px;
+}
+
+.section {
+  margin-top: 18px;
+}
+
+.segmented,
+.chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+
+.chip,
+.button,
+.icon-button,
+.input,
+.select,
+.textarea {
+  min-height: 44px;
+  border-radius: 8px;
+}
+
+.chip {
+  min-width: 48px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--muted);
+  font-weight: 750;
+}
+
+.chip-active,
+.mode-active {
+  border-color: rgba(43, 217, 255, 0.55);
+  background: rgba(43, 217, 255, 0.14);
+  color: var(--text);
+}
+
+.button,
+.icon-button {
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--text);
+  font-weight: 750;
+}
+
+.button-primary {
+  border-color: rgba(43, 217, 255, 0.55);
+  background: linear-gradient(135deg, #11657a, #143b64);
+}
+
+.button-danger {
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #fecaca;
+}
+
+.button-full {
+  width: 100%;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #0b121e;
+  color: var(--text);
+  padding: 11px 12px;
+}
+
+.textarea {
+  min-height: 76px;
+  resize: vertical;
+}
+
+.form {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.holding-item,
+.cashflow-item,
+.plan-item {
+  padding: 14px;
+}
+
+.item-title {
+  font-weight: 800;
+}
+
+.item-meta {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.allocation-bar {
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.allocation-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+.chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chart-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart-area {
+  fill: rgba(43, 217, 255, 0.08);
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  z-index: 10;
+  width: min(100%, 480px);
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 2px;
+  padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+  background: rgba(7, 11, 18, 0.92);
+  backdrop-filter: blur(18px);
+}
+
+.nav-link {
+  min-height: 50px;
+  display: grid;
+  place-items: center;
+  gap: 2px;
+  border-radius: 8px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 750;
+  min-width: 0;
+}
+
+.nav-link-active {
+  background: rgba(43, 217, 255, 0.12);
+  color: var(--text);
+}
+
+.login-page {
+  min-height: 100dvh;
+  display: grid;
+  align-content: center;
+  gap: 18px;
+}
+
+.login-mark {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(43, 217, 255, 0.14);
+  color: var(--accent);
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.12);
+  color: #bbf7d0;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+@media (max-width: 360px) {
+  .form-grid,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-amount {
+    font-size: 32px;
+  }
+}
