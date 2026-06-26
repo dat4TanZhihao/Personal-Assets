@@ -6,8 +6,8 @@
   "scripts": {
     "test": "vitest",
     "dev:web": "next dev",
-    "build:web": "next build",
-    "build": "next build",
+    "build:web": "next build --webpack",
+    "build": "next build --webpack",
     "build:worker": "opennextjs-cloudflare build",
     "preview:worker": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy:worker": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",

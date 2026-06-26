@@ -2,7 +2,7 @@ import { contextFromRequest, getWebBackend, handleApi, readJson } from '../../..
 
 export const runtime = 'nodejs';
 
-type RouteContext = { params: { id: string } | Promise<{ id: string }> };
+type RouteContext = { params: Promise<{ id: string }> };
 
 export async function PATCH(request: Request, context: RouteContext): Promise<Response> {
   const { id } = await context.params;
