@@ -30,11 +30,12 @@ export async function apiCall(name, input = {}) {
   for (const [key, value] of Object.entries(query)) {
     if (value !== undefined && value !== null && value !== '') url.searchParams.set(key, value);
   }
+  const hasBody = !['GET', 'DELETE'].includes(route.method);
   const response = await fetch(url.pathname + url.search, {
     method: route.method,
-    headers: { 'content-type': 'application/json' },
+    headers: hasBody ? { 'content-type': 'application/json' } : undefined,
     credentials: 'include',
-    body: ['GET', 'DELETE'].includes(route.method) ? undefined : JSON.stringify(input)
+    body: hasBody ? JSON.stringify(input) : undefined
   });
 
   if (response.status === 401) {
